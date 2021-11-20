@@ -11,10 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.google.api.client.auth.oauth2.AuthorizationCodeRequestUrl;
@@ -152,7 +149,7 @@ public class GoogleMailController {
         return "Working!!";
     }
 
-    @RequestMapping(value = "/testme1", method = RequestMethod.POST,
+    @RequestMapping(value = "/testme2", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public Map<String, Object> signup1(@RequestParam Map<String, Object> test){
@@ -163,5 +160,17 @@ public class GoogleMailController {
         Map<String,Object> resp = new HashMap<>();
         resp.put("status", "success");
         return resp;
+    }
+
+    @RequestMapping(
+            value = "/testme1",
+            method = RequestMethod.POST)
+    public Map<String, Object> process(@RequestBody Map<String, Object> payload)
+            throws Exception {
+
+        Map<String,Object> resp = new HashMap<>();
+        resp.put("status", "success");
+        return resp;
+
     }
 }
