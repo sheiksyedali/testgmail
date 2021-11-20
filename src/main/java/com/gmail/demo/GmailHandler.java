@@ -64,7 +64,8 @@ public class GmailHandler {
             String userId = "me";
 //            String query = "subject:'Welcome to A2Cart'";
 //            ListMessagesResponse MsgResponse = client.users().messages().list(userId).setQ(query).execute();
-            ListMessagesResponse MsgResponse = client.users().messages().list(userId).setQ("is:unread").execute();
+//            ListMessagesResponse MsgResponse = client.users().messages().list(userId).setQ("is:unread").execute(); //working queyr
+            ListMessagesResponse MsgResponse = client.users().messages().list(userId).setQ("from:noreply@heroku.com").execute();
 
             List<Message> messages = new ArrayList<>();
 
