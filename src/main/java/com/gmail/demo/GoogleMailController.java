@@ -1,7 +1,5 @@
 package com.gmail.demo;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -151,5 +150,18 @@ public class GoogleMailController {
     @RequestMapping(value = "/login/test", method = RequestMethod.GET)
     public String testMe(HttpServletRequest request) throws Exception {
         return "Working!!";
+    }
+
+    @RequestMapping(value = "/testme1", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public Map<String, Object> signup1(@RequestParam Map<String, Object> test){
+        System.out.println("Hai Sheik, im in signup1");
+        for (Map.Entry<String,Object> entry : test.entrySet()){
+            System.out.println("[Sheik-mail-input]Key = " + entry.getKey() + ", Value = " + entry.getValue());
+        }
+        Map<String,Object> resp = new HashMap<>();
+        resp.put("status", "success");
+        return resp;
     }
 }
