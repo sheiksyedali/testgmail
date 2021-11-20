@@ -61,38 +61,38 @@ public class GmailHandler {
              */
 
 //            client.users().watch()
-            String userId = "me";
-//            String query = "subject:'Welcome to A2Cart'";
-//            ListMessagesResponse MsgResponse = client.users().messages().list(userId).setQ(query).execute();
-//            ListMessagesResponse MsgResponse = client.users().messages().list(userId).setQ("is:unread").execute(); //working queyr
-            ListMessagesResponse MsgResponse = client.users().messages().list(userId).setQ("from:noreply@heroku.com").execute();
-
-            List<Message> messages = new ArrayList<>();
-
-            System.out.println("message length:" + MsgResponse.getMessages().size());
-
-            for (Message msg : MsgResponse.getMessages()) {
-
-                messages.add(msg);
-
-                Message message = client.users().messages().get(userId, msg.getId()).execute();
-                System.out.println("snippet :" + message.getSnippet());
-
-                arr.put(message.getSnippet());
-
-                /*
-                 * if (MsgResponse.getNextPageToken() != null) { String
-                 * pageToken = MsgResponse.getNextPageToken(); MsgResponse =
-                 * client.users().messages().list(userId).setQ(query).
-                 * setPageToken(pageToken).execute(); } else { break; }
-                 */
-            }
-            json.put("response", arr);
-
-            for (Message msg : messages) {
-
-                System.out.println("msg: " + msg.toPrettyString());
-            }
+//            String userId = "me";
+////            String query = "subject:'Welcome to A2Cart'";
+////            ListMessagesResponse MsgResponse = client.users().messages().list(userId).setQ(query).execute();
+////            ListMessagesResponse MsgResponse = client.users().messages().list(userId).setQ("is:unread").execute(); //working queyr
+//            ListMessagesResponse MsgResponse = client.users().messages().list(userId).setQ("from:noreply@heroku.com").execute();
+//
+//            List<Message> messages = new ArrayList<>();
+//
+//            System.out.println("message length:" + MsgResponse.getMessages().size());
+//
+//            for (Message msg : MsgResponse.getMessages()) {
+//
+//                messages.add(msg);
+//
+//                Message message = client.users().messages().get(userId, msg.getId()).execute();
+//                System.out.println("snippet :" + message.getSnippet());
+//
+//                arr.put(message.getSnippet());
+//
+//                /*
+//                 * if (MsgResponse.getNextPageToken() != null) { String
+//                 * pageToken = MsgResponse.getNextPageToken(); MsgResponse =
+//                 * client.users().messages().list(userId).setQ(query).
+//                 * setPageToken(pageToken).execute(); } else { break; }
+//                 */
+//            }
+//            json.put("response", arr);
+//
+//            for (Message msg : messages) {
+//
+//                System.out.println("msg: " + msg.toPrettyString());
+//            }
 
         } catch (Exception e) {
 
