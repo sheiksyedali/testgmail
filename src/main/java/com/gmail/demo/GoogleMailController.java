@@ -167,7 +167,11 @@ public class GoogleMailController {
             method = RequestMethod.POST)
     public Map<String, Object> process(@RequestBody Map<String, Object> payload)
             throws Exception {
-
+        System.out.println("======================");
+        for (Map.Entry<String,Object> entry : payload.entrySet()){
+            System.out.println("[Sheik-mail-input]Key = " + entry.getKey() + ", Value = " + entry.getValue());
+        }
+        System.out.println("======================");
         Map<String,Object> resp = new HashMap<>();
         resp.put("status", "success");
         return resp;
